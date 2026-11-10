@@ -29,18 +29,30 @@ public class MemberService {
     }
 
     public Member[] getMembers() {
-        return null;
+        return memberRepository.findAll();
     }
 
     public Member getMember(int id) {
-        return null;
+        return memberRepository.findById(id);
     }
 
     public boolean updateMember(int id, String name, String phone) {
-        return true;
+        //전달받은 id로 기존 멤버 검색
+        Member member = memberRepository.findById(id);
+        //member가 null인지 확인
+        if (member == null) return false;
+        //name, phone 값으로 수정
+        //조건: 기존 값을 수정하지 않으면 비어있는 상태로 name, phone 전송.
+        //-> 비어있으면 건드리지 마.
+        if (! name.isBlank()) member.setName(name);
+        if (! phone.isBlank()) member.setPhone(phone);
+        member.setName(name);
+        member.setPhone(phone);
+        //리포에 있는 update 수행
+        return memberRepository.update(member);
     }
 
     public boolean deleteMember(int id) {
-        return true;
+        return memberRepository.deleteById(id);
     }
 }

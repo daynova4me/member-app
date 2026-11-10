@@ -13,7 +13,7 @@ public interface MemberRepository {
 
     // 특정 아이디를 찾는 기능
     // id 받아서 있으면 true, 없으면 false
-    boolean findById(int id);
+    Member findById(int id);
     // 수정
     // 수정할 멤버를 받아서 수정처리
     // 수정 후 성공 : true, 실패 : false
