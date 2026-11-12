@@ -15,6 +15,7 @@ public class ArrayMemberRepository implements MemberRepository{
 
     @Override
     public boolean save(Member member) {
+
         System.out.println(member);
         // 배열 갯수 10개 넘었는지 확인
         if(count == members.length){
